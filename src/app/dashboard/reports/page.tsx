@@ -132,7 +132,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
 
   return (
     <div className="max-w-5xl">
-      <div className="flex items-start justify-between mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">Groepsrapportage</h1>
           <p className="text-sm text-gray-400 mt-1">
@@ -170,7 +170,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
 
       {total > 0 && (
         <>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-2 gap-4 mb-6">
             {(Object.keys(distribution) as string[]).map(q => {
               const count = distribution[q]
               const pct = total > 0 ? Math.round((count / total) * 100) : 0
@@ -188,7 +188,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
             })}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 gap-6 mb-6">
             <div className="bg-white rounded-2xl shadow-sm p-6">
               <h2 className="font-semibold text-gray-700 mb-4">Groepsoverzicht</h2>
               <ScatterPlot sessions={latestPerRespondent} />
@@ -248,25 +248,21 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
                 const c = QUADRANT_COLORS[s.quadrant]
                 return (
                   <Link key={s.coachee_id} href={`/dashboard/coachees/${s.coachee_id}`}
-                    className="flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition">
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    className="flex items-center justify-between p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white shrink-0"
                         style={{ backgroundColor: c?.dot ?? '#6b7280' }}>
                         {(r?.full_name ?? r?.email ?? '?').charAt(0).toUpperCase()}
                       </div>
-                      <div>
-                        <p className="text-sm font-medium text-gray-800">{r?.full_name ?? r?.email}</p>
-                        <p className="text-xs text-gray-400">{r?.email}</p>
+                      <div className="min-w-0">
+                        <p className="text-sm font-medium text-gray-800 truncate">{r?.full_name ?? r?.email}</p>
+                        <span className="px-2 py-0.5 rounded-full text-xs font-medium"
+                          style={{ backgroundColor: c?.bg, color: c?.text }}>
+                          {QUADRANT_LABELS[s.quadrant]}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex items-center gap-4 text-xs text-gray-400">
-                      <span className="px-2.5 py-1 rounded-full text-xs font-medium"
-                        style={{ backgroundColor: c?.bg, color: c?.text }}>
-                        {QUADRANT_LABELS[s.quadrant]}
-                      </span>
-                      <span>x: {s.x_score?.toFixed(1)} · y: {s.y_score?.toFixed(1)}</span>
-                      <span className="text-[#1E3A8A]">Bekijk →</span>
-                    </div>
+                    <span className="text-[#1E3A8A] text-sm shrink-0 ml-2">→</span>
                   </Link>
                 )
               })}

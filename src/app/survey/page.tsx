@@ -123,7 +123,7 @@ export default function SurveyPage() {
 
       {/* Vraagkaart */}
       <div className="flex-1 px-6 max-w-3xl mx-auto w-full">
-        <div className="bg-white rounded-3xl shadow-lg p-8 mb-6">
+        <div className="bg-white rounded-3xl shadow-lg p-5 sm:p-8 mb-6">
 
           {/* Vraagnummer badge */}
           <div className="inline-flex items-center gap-2 bg-[#1E3A8A]/8 text-[#1E3A8A] text-xs font-semibold px-3 py-1.5 rounded-full mb-5">
@@ -134,7 +134,7 @@ export default function SurveyPage() {
           </div>
 
           {/* Vraag */}
-          <p className="text-xl font-semibold text-gray-800 leading-relaxed mb-8">
+          <p className="text-lg sm:text-xl font-semibold text-gray-800 leading-relaxed mb-6 sm:mb-8">
             {question.nl}
           </p>
 

@@ -51,7 +51,7 @@ function PlanCard({ plan, onSave }: { plan: Plan; onSave: (p: Plan) => Promise<v
         </button>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <div>
           <label className="block text-xs font-medium text-gray-500 mb-1">Naam</label>
           <input value={data.name} onChange={e => set('name', e.target.value)}

@@ -20,7 +20,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
         role={(profile?.role ?? 'coachee') as Role}
         name={profile?.full_name ?? profile?.email ?? user.email ?? ''}
       />
-      <main className="flex-1 p-8 overflow-auto">
+      <main className="flex-1 p-4 md:p-8 overflow-auto pt-16 md:pt-8">
         {children}
       </main>
     </div>

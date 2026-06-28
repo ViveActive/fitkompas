@@ -98,7 +98,7 @@ export default async function AccountPage() {
       )}
 
       {/* Statistieken */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-3 sm:grid-cols-3 gap-3 mb-6">
         <div className="bg-white rounded-2xl shadow-sm p-5 text-center">
           <p className="text-3xl font-bold text-[#1E3A8A]">{respondents?.length ?? 0}</p>
           <p className="text-xs text-gray-400 mt-1">Respondenten</p>
@@ -113,7 +113,7 @@ export default async function AccountPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 gap-6 mb-6">
 
         {/* Abonnementen */}
         <div className="bg-white rounded-2xl shadow-sm p-6">

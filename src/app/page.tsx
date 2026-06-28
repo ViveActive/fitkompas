@@ -46,18 +46,18 @@ export default async function Home() {
       </header>
 
       {/* Hero */}
-      <section className="flex-1 flex flex-col items-center justify-center text-center px-6 py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="flex-1 flex flex-col items-center justify-center text-center px-6 py-12 sm:py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-3xl mx-auto">
           <div className="inline-block bg-[#F47920]/10 text-[#F47920] text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
             Jouw persoonlijke beweegprofiel
           </div>
 
-          <h1 className="text-5xl font-bold text-gray-900 leading-tight mb-6">
+          <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 leading-tight mb-6">
             Met inzicht op de juiste koers<br />
             <span className="text-[#F47920]">naar een gezonde leefstijl</span>
           </h1>
 
-          <p className="text-xl text-gray-500 mb-10 max-w-xl mx-auto">
+          <p className="text-base sm:text-xl text-gray-500 mb-10 max-w-xl mx-auto">
             Fitkompas brengt jouw beweeggedrag en motivatie in kaart. In 15 minuten weet je waar je staat — en wat je in beweging zet.
           </p>
 
@@ -73,7 +73,7 @@ export default async function Home() {
       </section>
 
       {/* Foto sectie */}
-      <section className="bg-white py-20 px-6">
+      <section className="bg-white py-10 sm:py-20 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             { file: '/hardlopen.jpg', label: 'In beweging' },
@@ -132,10 +132,10 @@ export default async function Home() {
       </section>
 
       {/* Kwadrant preview */}
-      <section className="bg-white py-20 px-6">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+      <section className="bg-white py-10 sm:py-20 px-6">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-8 md:flex-row md:gap-12">
           <div className="flex-1">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
               Vier profielen,<br />één kompas
             </h2>
             <p className="text-gray-500 mb-6 leading-relaxed">

@@ -42,7 +42,7 @@ export default async function DashboardPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Overzicht</h1>
 
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           {[
             { label: 'Coaches', value: coachCount ?? 0, color: 'border-[#1E3A8A]' },
             { label: 'Respondenten', value: coacheeCount ?? 0, color: 'border-[#F47920]' },
@@ -94,7 +94,7 @@ export default async function DashboardPage() {
       <div>
         <h1 className="text-2xl font-bold text-gray-800 mb-6">Mijn dashboard</h1>
 
-        <div className="grid grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 mb-8">
           <div className="bg-white rounded-xl p-5 border-l-4 border-[#1E3A8A] shadow-sm">
             <p className="text-3xl font-bold text-gray-800">{respondenten?.length ?? 0}</p>
             <p className="text-sm text-gray-500 mt-1">Respondenten</p>

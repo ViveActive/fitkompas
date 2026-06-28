@@ -102,7 +102,7 @@ export default function PricingContent({ plans }: { plans: Plan[] }) {
             <div className="bg-red-50 text-red-700 text-sm rounded-lg px-4 py-3 mb-6 max-w-md mx-auto text-center">{error}</div>
           )}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {plans.map(plan => (
               <div key={plan.id} className={`rounded-2xl flex flex-col relative overflow-hidden transition-shadow hover:shadow-lg ${
                 plan.highlight

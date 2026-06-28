@@ -72,7 +72,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
       </div>
 
       {/* Kwadrant tellingen */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-2 gap-3 mb-6">
         {Object.entries(QUADRANT_LABELS).map(([key, label]) => (
           <Link
             key={key}
@@ -117,7 +117,7 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
               <Link
                 key={s.id}
                 href={`/results/${s.id}`}
-                className="flex items-center gap-4 px-5 py-4 hover:bg-gray-50 transition"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition"
               >
                 <div className={`w-2 h-2 rounded-full flex-shrink-0 ${QUADRANT_DOT[s.quadrant] ?? 'bg-gray-300'}`} />
                 <div className="flex-1 min-w-0">
@@ -125,18 +125,15 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
                     {respondent?.full_name ?? respondent?.email ?? 'Onbekend'}
                   </p>
                   <p className="text-xs text-gray-400 truncate">
-                    Coach: {coach?.full_name ?? coach?.email ?? '—'}
+                    {new Date(s.completed_at).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })}
                   </p>
                 </div>
-                <div className="text-right flex-shrink-0">
+                <div className="hidden sm:block text-right flex-shrink-0">
                   {s.quadrant && (
-                    <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full mb-1 ${QUADRANT_COLORS[s.quadrant]}`}>
+                    <span className={`inline-block text-xs font-semibold px-2.5 py-1 rounded-full ${QUADRANT_COLORS[s.quadrant]}`}>
                       {QUADRANT_LABELS[s.quadrant]}
                     </span>
                   )}
-                  <p className="text-xs text-gray-400">
-                    {new Date(s.completed_at).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' })}
-                  </p>
                 </div>
                 <span className="text-[#1E3A8A] text-sm flex-shrink-0">→</span>
               </Link>
