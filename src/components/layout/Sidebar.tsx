@@ -23,6 +23,7 @@ const NAV = {
     { href: '/dashboard/coachees', label: 'Mijn respondenten' },
     { href: '/dashboard/groups', label: 'Groepen' },
     { href: '/dashboard/reports', label: 'Rapportage' },
+    { href: '/dashboard/sessions', label: 'Alle sessies' },
     { href: '/dashboard/invite', label: 'Uitnodigen' },
     { href: '/dashboard/account', label: 'Mijn account' },
   ],
