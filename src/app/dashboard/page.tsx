@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { headers } from 'next/headers'
 
 const QUADRANT_LABELS: Record<string, string> = {
   active_motivated: 'Actief & Gemotiveerd',
@@ -16,10 +17,22 @@ const QUADRANT_COLORS: Record<string, string> = {
   inactive_unmotivated: 'bg-red-100 text-red-700',
 }
 
+function detectLang(): 'nl' | 'en' {
+  try {
+    const hdrs = headers()
+    const accept = (hdrs as unknown as { get: (k: string) => string | null }).get('accept-language') ?? ''
+    const preferred = accept.split(',')[0]?.split('-')[0]?.toLowerCase()
+    return preferred === 'en' ? 'en' : 'nl'
+  } catch {
+    return 'nl'
+  }
+}
+
 export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
+  const lang = detectLang()
 
   const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
   const role = profile?.role ?? 'coachee'
@@ -138,9 +151,9 @@ export default async function DashboardPage() {
       <h1 className="text-2xl font-bold text-gray-800 mb-2">Mijn resultaten</h1>
       <p className="text-gray-500 mb-6">Welkom, {profile?.full_name ?? user.email}</p>
 
-      <Link href="/survey"
+      <Link href={`/${lang}/survey`}
         className="inline-block mb-8 bg-[#F47920] hover:bg-orange-600 text-white font-medium rounded-lg px-6 py-3 text-sm transition">
-        Nieuwe vragenlijst invullen
+        {lang === 'en' ? 'Fill in a new questionnaire' : 'Nieuwe vragenlijst invullen'}
       </Link>
 
       {sessions?.length === 0 && (
@@ -151,7 +164,7 @@ export default async function DashboardPage() {
 
       <div className="space-y-3">
         {sessions?.map((s: any) => (
-          <Link key={s.id} href={`/results/${s.id}`}
+          <Link key={s.id} href={`/${lang}/results/${s.id}`}
             className="flex items-center justify-between bg-white rounded-xl shadow-sm p-5 hover:shadow-md transition">
             <div>
               <p className="text-sm text-gray-400">{new Date(s.completed_at).toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
