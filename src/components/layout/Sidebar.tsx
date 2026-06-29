@@ -18,6 +18,7 @@ const NAV = {
     { href: '/survey', label: '↗ Vragenlijst (preview)' },
     { href: '/pricing', label: '↗ Pricing pagina' },
     { href: '/dashboard/pricing', label: 'Prijzen beheren' },
+    { href: '/dashboard/preview', label: '📱 Voorbeeldweergave' },
   ],
   coach: [
     { href: '/dashboard', label: 'Overzicht' },

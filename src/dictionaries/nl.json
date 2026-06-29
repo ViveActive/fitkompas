@@ -1,0 +1,173 @@
+{
+  "common": {
+    "logo": "Fitkompas",
+    "by_viveactive": "by ViveActive",
+    "loading": "Bezig...",
+    "login": "Inloggen",
+    "register": "Registreren",
+    "back_to_dashboard": "← Terug naar dashboard",
+    "admin_preview": "Voorbeeldweergave als admin",
+    "error_generic": "Er is een fout opgetreden. Probeer opnieuw."
+  },
+  "home": {
+    "nav_login": "Inloggen",
+    "nav_coaches": "Voor coaches",
+    "hero_badge": "Jouw persoonlijke beweegprofiel",
+    "hero_title": "Met inzicht op de juiste koers",
+    "hero_title_highlight": "naar een gezonde leefstijl",
+    "hero_sub": "Fitkompas brengt jouw beweeggedrag en motivatie in kaart. In 15 minuten weet je waar je staat — en wat je in beweging zet.",
+    "hero_cta": "Start de vragenlijst →",
+    "photos": ["In beweging", "Samen op koers", "Jouw richting"],
+    "usp_title": "Inzicht dat activeert",
+    "usp_sub": "Fitkompas laat zien hoe jij je verhoudt tot bewegen — niet met een oordeel, maar met een kompas.",
+    "usp_items": [
+      { "icon": "🧭", "title": "Jouw profiel", "text": "Via 60 stellingen brengen we jouw beweeggedrag en motivatie in kaart op een 2x2 kwadrant." },
+      { "icon": "💡", "title": "Helder inzicht", "text": "Je ziet direct waar je staat: actief of passief, gemotiveerd of nog niet. Geen oordeel, wel richting." },
+      { "icon": "🏃", "title": "In beweging", "text": "Met jouw profiel geeft jouw coach je gerichte begeleiding die echt bij jou past." }
+    ],
+    "quadrant_title": "Vier profielen,",
+    "quadrant_title2": "één kompas",
+    "quadrant_sub": "Fitkompas plaatst je in één van vier kwadranten op basis van je gedrag en motivatie. Zo weet jij — en je coach — precies wat de beste aanpak voor jou is.",
+    "quadrant_cta": "Start nu →",
+    "quadrant_labels": ["Actief & Gemotiveerd", "Actief & Niet gem.", "Niet actief & Gem.", "Niet actief & Niet gem."],
+    "cta_title": "Ontdek jouw beweegprofiel",
+    "cta_sub": "Vul de vragenlijst in en krijg direct inzicht in jouw motivatie en gedrag.",
+    "cta_button": "Begin gratis →",
+    "cta_coach": "Ben je coach?",
+    "cta_coach_link": "Bekijk de mogelijkheden"
+  },
+  "login": {
+    "title": "Inloggen",
+    "email": "E-mailadres",
+    "password": "Wachtwoord",
+    "forgot": "Wachtwoord vergeten?",
+    "button": "Inloggen",
+    "no_account": "Nog geen account?",
+    "register_link": "Registreren",
+    "error": "E-mailadres of wachtwoord klopt niet."
+  },
+  "register": {
+    "title": "Account aanmaken",
+    "title_invited": "Je bent uitgenodigd — maak een account aan",
+    "invite_banner": "Persoonlijke uitnodiging voor",
+    "full_name": "Volledige naam",
+    "email": "E-mailadres",
+    "password": "Wachtwoord",
+    "code_label": "Code",
+    "code_optional": "(optioneel)",
+    "code_placeholder": "bijv. ABC123",
+    "code_hint": "Heb je een code ontvangen? Vul die hier in.",
+    "button": "Account aanmaken",
+    "has_account": "Al een account?",
+    "login_link": "Inloggen",
+    "error_invalid_token": "Deze uitnodigingslink is ongeldig of al gebruikt.",
+    "error_email_mismatch": "Dit e-mailadres komt niet overeen met de uitnodiging.",
+    "error_in_use": "Dit e-mailadres is al in gebruik. Probeer in te loggen."
+  },
+  "register_coach": {
+    "title": "Coach account aanmaken",
+    "chosen_plan": "Gekozen plan:",
+    "full_name": "Volledige naam",
+    "email": "E-mailadres",
+    "password": "Wachtwoord",
+    "button": "Doorgaan naar betaling →",
+    "has_account": "Al een account?",
+    "login_link": "Inloggen",
+    "stripe_note": "Je wordt doorgestuurd naar Stripe voor veilige betaling.",
+    "error_failed": "Betaling starten mislukt. Probeer opnieuw."
+  },
+  "forgot_password": {
+    "title": "Wachtwoord vergeten",
+    "intro": "Vul je e-mailadres in en we sturen je een link om je wachtwoord opnieuw in te stellen.",
+    "email": "E-mailadres",
+    "button": "Stuur resetlink →",
+    "back_to_login": "Terug naar inloggen",
+    "sent_title": "Controleer je inbox",
+    "sent_text": "Als",
+    "sent_text2": "bij ons bekend is, ontvang je een e-mail met een link om je wachtwoord opnieuw in te stellen.",
+    "error": "Er ging iets mis. Controleer je e-mailadres en probeer opnieuw."
+  },
+  "reset_password": {
+    "title": "Nieuw wachtwoord instellen",
+    "new_password": "Nieuw wachtwoord",
+    "confirm_password": "Bevestig wachtwoord",
+    "button": "Wachtwoord opslaan →",
+    "error_mismatch": "Wachtwoorden komen niet overeen.",
+    "error_length": "Wachtwoord moet minimaal 8 tekens zijn.",
+    "error_failed": "Er ging iets mis. Probeer de resetlink opnieuw aan te vragen."
+  },
+  "survey": {
+    "question_badge": "Stelling",
+    "options": [
+      { "label": "Helemaal eens", "value": 2 },
+      { "label": "Eens", "value": 1 },
+      { "label": "Neutraal", "value": 0 },
+      { "label": "Niet eens", "value": -1 },
+      { "label": "Helemaal niet eens", "value": -2 },
+      { "label": "Geen mening", "value": -99 }
+    ],
+    "prev": "← Vorige",
+    "next": "Volgende →",
+    "finish": "Resultaten bekijken ✓",
+    "saving": "Opslaan...",
+    "error_answer": "Kies een antwoord om verder te gaan.",
+    "question_of": "van",
+    "progress": "ingevuld"
+  },
+  "results": {
+    "title": "Jouw resultaat",
+    "compass_title": "Jouw positie op het kompas",
+    "compass_note": "Elk punt = jouw score",
+    "activity": "Activiteit (x)",
+    "motivation": "Motivatie (y)",
+    "back": "Terug naar dashboard",
+    "motivated": "Gemotiveerd",
+    "unmotivated": "Niet gemotiveerd",
+    "active": "Actief",
+    "passive": "Passief",
+    "quadrants": {
+      "active_motivated": {
+        "title": "Actief & Gemotiveerd",
+        "description": "Bewegen en gezondheid wordt door jou als iets positiefs opgepakt. Met een bepaald doel voor ogen en voorzien van een dosis daadkracht besteed je voldoende aandacht aan bewegen en gezondheid."
+      },
+      "active_unmotivated": {
+        "title": "Actief & Niet gemotiveerd",
+        "description": "Actief werken aan bewegen en gezondheid lukt wel, maar echt leuk vind je het niet. De kans op een terugval is groot als de hoofdreden van bewegen niet meer actueel is."
+      },
+      "inactive_motivated": {
+        "title": "Niet actief & Gemotiveerd",
+        "description": "Actief werken aan bewegen en gezondheid wil je wel, maar het lukt niet de stap te maken naar het DOEN. Diverse oorzaken kunnen de stap naar actie ondermijnen."
+      },
+      "inactive_unmotivated": {
+        "title": "Niet actief & Niet gemotiveerd",
+        "description": "Als je geen ervaring hebt met sport en bewegen, niet openstaat voor verandering en sociale ondersteuning mist, wordt het moeilijk om actief en gemotiveerd te worden. Maar het KAN wel — stapje voor stapje."
+      }
+    }
+  },
+  "pricing": {
+    "header_login": "Inloggen",
+    "for_coaches": "Voor coaches & begeleiders",
+    "hero_title": "Geef jouw cliënten inzicht.",
+    "hero_title_highlight": "Geef jezelf grip.",
+    "hero_sub": "Fitkompas brengt het beweegprofiel van jouw respondenten in kaart — met een wetenschappelijk onderbouwde vragenlijst en direct bruikbare rapportages.",
+    "usps": [
+      { "icon": "🧭", "title": "Direct inzicht", "text": "Elke respondent krijgt meteen zijn persoonlijk beweegprofiel — jij als coach ziet het resultaat direct." },
+      { "icon": "📊", "title": "Groepsrapportage", "text": "Zie in één oogopslag hoe jouw groep verdeeld is over de vier kwadranten." },
+      { "icon": "🔗", "title": "Eigen uitnodigingslink", "text": "Deel jouw unieke coach-code of link en respondenten worden direct aan jou gekoppeld." }
+    ],
+    "plans_title": "Kies jouw plan",
+    "plans_sub": "Geen verborgen kosten. Direct aan de slag.",
+    "button": "Begin nu →",
+    "already_account": "Al een account?",
+    "login_link": "Inloggen",
+    "questions": "Vragen?",
+    "contact_link": "Neem contact op",
+    "cta_title": "Klaar om te starten?",
+    "cta_sub": "Registreer je in 2 minuten en stuur je eerste respondent vandaag nog een uitnodiging.",
+    "cta_button": "Ga aan de slag →"
+  },
+  "footer": {
+    "text": "ViveActive",
+    "year": "© 2026"
+  }
+}

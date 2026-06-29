@@ -1,0 +1,173 @@
+{
+  "common": {
+    "logo": "Fitkompas",
+    "by_viveactive": "by ViveActive",
+    "loading": "Loading...",
+    "login": "Log in",
+    "register": "Register",
+    "back_to_dashboard": "← Back to dashboard",
+    "admin_preview": "Preview as admin",
+    "error_generic": "Something went wrong. Please try again."
+  },
+  "home": {
+    "nav_login": "Log in",
+    "nav_coaches": "For coaches",
+    "hero_badge": "Your personal movement profile",
+    "hero_title": "Gain insight and stay on course",
+    "hero_title_highlight": "towards a healthy lifestyle",
+    "hero_sub": "Fitkompas maps your movement behaviour and motivation. In 15 minutes you know where you stand — and what gets you moving.",
+    "hero_cta": "Start the questionnaire →",
+    "photos": ["In motion", "On course together", "Your direction"],
+    "usp_title": "Insight that activates",
+    "usp_sub": "Fitkompas shows how you relate to movement — not with judgement, but with a compass.",
+    "usp_items": [
+      { "icon": "🧭", "title": "Your profile", "text": "Through 60 statements we map your movement behaviour and motivation on a 2x2 quadrant." },
+      { "icon": "💡", "title": "Clear insight", "text": "You immediately see where you stand: active or passive, motivated or not yet. No judgement, just direction." },
+      { "icon": "🏃", "title": "Get moving", "text": "With your profile, your coach can give you targeted guidance that truly suits you." }
+    ],
+    "quadrant_title": "Four profiles,",
+    "quadrant_title2": "one compass",
+    "quadrant_sub": "Fitkompas places you in one of four quadrants based on your behaviour and motivation. That way, you — and your coach — know exactly what the best approach is for you.",
+    "quadrant_cta": "Start now →",
+    "quadrant_labels": ["Active & Motivated", "Active & Not mot.", "Not active & Mot.", "Not active & Not mot."],
+    "cta_title": "Discover your movement profile",
+    "cta_sub": "Complete the questionnaire and get immediate insight into your motivation and behaviour.",
+    "cta_button": "Start for free →",
+    "cta_coach": "Are you a coach?",
+    "cta_coach_link": "View the options"
+  },
+  "login": {
+    "title": "Log in",
+    "email": "Email address",
+    "password": "Password",
+    "forgot": "Forgot password?",
+    "button": "Log in",
+    "no_account": "No account yet?",
+    "register_link": "Register",
+    "error": "Email address or password is incorrect."
+  },
+  "register": {
+    "title": "Create account",
+    "title_invited": "You've been invited — create an account",
+    "invite_banner": "Personal invitation for",
+    "full_name": "Full name",
+    "email": "Email address",
+    "password": "Password",
+    "code_label": "Code",
+    "code_optional": "(optional)",
+    "code_placeholder": "e.g. ABC123",
+    "code_hint": "Have you received a code? Enter it here.",
+    "button": "Create account",
+    "has_account": "Already have an account?",
+    "login_link": "Log in",
+    "error_invalid_token": "This invitation link is invalid or has already been used.",
+    "error_email_mismatch": "This email address does not match the invitation.",
+    "error_in_use": "This email address is already in use. Try logging in."
+  },
+  "register_coach": {
+    "title": "Create coach account",
+    "chosen_plan": "Chosen plan:",
+    "full_name": "Full name",
+    "email": "Email address",
+    "password": "Password",
+    "button": "Continue to payment →",
+    "has_account": "Already have an account?",
+    "login_link": "Log in",
+    "stripe_note": "You will be redirected to Stripe for secure payment.",
+    "error_failed": "Failed to start payment. Please try again."
+  },
+  "forgot_password": {
+    "title": "Forgot password",
+    "intro": "Enter your email address and we'll send you a link to reset your password.",
+    "email": "Email address",
+    "button": "Send reset link →",
+    "back_to_login": "Back to login",
+    "sent_title": "Check your inbox",
+    "sent_text": "If",
+    "sent_text2": "is known to us, you'll receive an email with a link to reset your password.",
+    "error": "Something went wrong. Check your email address and try again."
+  },
+  "reset_password": {
+    "title": "Set new password",
+    "new_password": "New password",
+    "confirm_password": "Confirm password",
+    "button": "Save password →",
+    "error_mismatch": "Passwords do not match.",
+    "error_length": "Password must be at least 8 characters.",
+    "error_failed": "Something went wrong. Please request a new reset link."
+  },
+  "survey": {
+    "question_badge": "Statement",
+    "options": [
+      { "label": "Strongly agree", "value": 2 },
+      { "label": "Agree", "value": 1 },
+      { "label": "Neutral", "value": 0 },
+      { "label": "Disagree", "value": -1 },
+      { "label": "Strongly disagree", "value": -2 },
+      { "label": "No opinion", "value": -99 }
+    ],
+    "prev": "← Previous",
+    "next": "Next →",
+    "finish": "View results ✓",
+    "saving": "Saving...",
+    "error_answer": "Please choose an answer to continue.",
+    "question_of": "of",
+    "progress": "completed"
+  },
+  "results": {
+    "title": "Your result",
+    "compass_title": "Your position on the compass",
+    "compass_note": "Each dot = your score",
+    "activity": "Activity (x)",
+    "motivation": "Motivation (y)",
+    "back": "Back to dashboard",
+    "motivated": "Motivated",
+    "unmotivated": "Not motivated",
+    "active": "Active",
+    "passive": "Passive",
+    "quadrants": {
+      "active_motivated": {
+        "title": "Active & Motivated",
+        "description": "You approach movement and health positively. With a clear goal in mind and a dose of drive, you give sufficient attention to movement and health."
+      },
+      "active_unmotivated": {
+        "title": "Active & Not motivated",
+        "description": "You manage to work actively on movement and health, but you don't really enjoy it. The risk of relapse is high if the main reason for exercising is no longer relevant."
+      },
+      "inactive_motivated": {
+        "title": "Not active & Motivated",
+        "description": "You want to work actively on movement and health, but you can't quite make the step towards DOING. Various causes may undermine the step to action."
+      },
+      "inactive_unmotivated": {
+        "title": "Not active & Not motivated",
+        "description": "Without experience in sport and movement, without openness to change and missing social support, it becomes difficult to become active and motivated. But it IS possible — step by step."
+      }
+    }
+  },
+  "pricing": {
+    "header_login": "Log in",
+    "for_coaches": "For coaches & practitioners",
+    "hero_title": "Give your clients insight.",
+    "hero_title_highlight": "Give yourself control.",
+    "hero_sub": "Fitkompas maps the movement profile of your respondents — with a scientifically based questionnaire and immediately usable reports.",
+    "usps": [
+      { "icon": "🧭", "title": "Immediate insight", "text": "Every respondent immediately receives their personal movement profile — you as coach see the result right away." },
+      { "icon": "📊", "title": "Group report", "text": "See at a glance how your group is distributed across the four quadrants." },
+      { "icon": "🔗", "title": "Your own invite link", "text": "Share your unique coach code or link and respondents are linked directly to you." }
+    ],
+    "plans_title": "Choose your plan",
+    "plans_sub": "No hidden costs. Get started right away.",
+    "button": "Start now →",
+    "already_account": "Already have an account?",
+    "login_link": "Log in",
+    "questions": "Questions?",
+    "contact_link": "Contact us",
+    "cta_title": "Ready to get started?",
+    "cta_sub": "Register in 2 minutes and send your first respondent an invitation today.",
+    "cta_button": "Get started →"
+  },
+  "footer": {
+    "text": "ViveActive",
+    "year": "© 2026"
+  }
+}
