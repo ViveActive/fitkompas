@@ -14,6 +14,23 @@ type Plan = {
   features: string[]
   badge: string | null
   highlight: boolean
+  name_en: string | null
+  description_en: string | null
+  features_en: string[] | null
+  period_en: string | null
+  badge_en: string | null
+}
+
+function localize(plan: Plan, lang: Lang) {
+  if (lang === 'nl') return plan
+  return {
+    ...plan,
+    name: plan.name_en ?? plan.name,
+    description: plan.description_en ?? plan.description,
+    features: plan.features_en ?? plan.features,
+    period: plan.period_en ?? plan.period,
+    badge: plan.badge_en ?? plan.badge,
+  }
 }
 
 const dicts = {
@@ -72,6 +89,7 @@ export default function LangPricingContent({ plans, lang }: { plans: Plan[], lan
   const router = useRouter()
   const [loading, setLoading] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const localizedPlans = plans.map(p => localize(p, lang))
 
   async function handleSelect(planId: string) {
     setLoading(planId)
@@ -128,7 +146,7 @@ export default function LangPricingContent({ plans, lang }: { plans: Plan[], lan
           </div>
           {error && <div className="bg-red-50 text-red-700 text-sm rounded-lg px-4 py-3 mb-6 max-w-md mx-auto text-center">{error}</div>}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {plans.map(plan => (
+            {localizedPlans.map(plan => (
               <div key={plan.id} className={`rounded-2xl flex flex-col relative overflow-hidden transition-shadow hover:shadow-lg ${
                 plan.highlight ? 'bg-[#F47920] text-white shadow-xl shadow-orange-100 ring-2 ring-[#F47920]' : 'bg-white border border-gray-100 shadow-sm'
               }`}>

@@ -21,6 +21,11 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
     badge: body.badge,
     highlight: body.highlight,
     max_respondents: body.max_respondents ?? null,
+    name_en: body.name_en ?? null,
+    description_en: body.description_en ?? null,
+    features_en: body.features_en ?? null,
+    period_en: body.period_en ?? null,
+    badge_en: body.badge_en ?? null,
   }).eq('id', id)
 
   if (error) return NextResponse.json({ error: 'Opslaan mislukt' }, { status: 500 })
