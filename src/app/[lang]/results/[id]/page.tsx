@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import Link from 'next/link'
+import LangSwitcher from '@/components/layout/LangSwitcher'
 
 const QUADRANT_INFO = {
   nl: {
@@ -95,10 +96,15 @@ export default async function LangResultsPage({
   return (
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold mb-1">
-          <span className="text-[#F47920]">Fit</span><span className="text-[#1E3A8A]">kompas</span>
-        </h1>
-        <p className="text-gray-500 mb-6">{l.result}</p>
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h1 className="text-2xl font-bold">
+              <span className="text-[#F47920]">Fit</span><span className="text-[#1E3A8A]">kompas</span>
+            </h1>
+            <p className="text-gray-500 text-sm">{l.result}</p>
+          </div>
+          <LangSwitcher lang={lang} />
+        </div>
 
         <div className={`rounded-2xl border p-6 mb-6 ${info.bg} ${info.border}`}>
           <h2 className={`text-xl font-bold mb-2 ${info.color}`}>{info.title}</h2>

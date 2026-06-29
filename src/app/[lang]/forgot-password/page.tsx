@@ -4,6 +4,7 @@ import { use, useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { isValidLang, type Lang } from '@/lib/i18n'
+import LangSwitcher from '@/components/layout/LangSwitcher'
 
 const dicts = {
   nl: {
@@ -58,6 +59,9 @@ export default function ForgotPasswordPage({ params }: { params: Promise<{ lang:
 
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 px-4">
+      <div className="flex justify-end px-2 pt-4">
+        <LangSwitcher lang={lang} />
+      </div>
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-md">
           <div className="text-center mb-8">

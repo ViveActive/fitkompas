@@ -6,6 +6,7 @@ import { QUESTIONS, calculateScores } from '@/lib/questions'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { isValidLang, type Lang } from '@/lib/i18n'
+import LangSwitcher from '@/components/layout/LangSwitcher'
 
 const dicts = {
   nl: {
@@ -121,7 +122,10 @@ export default function LangSurveyPage({ params }: { params: Promise<{ lang: str
         <Link href={`/${lang}`} className="text-xl font-bold">
           <span className="text-[#F47920]">Fit</span><span className="text-[#1E3A8A]">kompas</span>
         </Link>
-        <span className="text-sm text-gray-400">Vraag {current + 1} {t.question_of} {total}</span>
+        <div className="flex items-center gap-4">
+          <LangSwitcher lang={lang} />
+          <span className="text-sm text-gray-400">{current + 1} {t.question_of} {total}</span>
+        </div>
       </header>
 
       <div className="px-6 max-w-3xl mx-auto w-full mb-8">
