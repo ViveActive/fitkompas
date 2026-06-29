@@ -71,8 +71,21 @@ function RegisterCoachForm({ lang }: { lang: Lang }) {
         setLoading(false)
         return
       }
-      await new Promise(r => setTimeout(r, 500))
+      await new Promise(r => setTimeout(r, 800))
     }
+
+    if (plan === 'free_trial') {
+      const res = await fetch('/api/free-trial', { method: 'POST' })
+      if (!res.ok) {
+        const data = await res.json()
+        setError(data.error ?? t.error_failed)
+        setLoading(false)
+        return
+      }
+      window.location.href = '/dashboard'
+      return
+    }
+
     const res = await fetch('/api/stripe/checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

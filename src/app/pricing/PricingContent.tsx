@@ -25,6 +25,8 @@ export default function PricingContent({ plans }: { plans: Plan[] }) {
   const router = useRouter()
   const [loading, setLoading] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const freePlan = plans.find(p => p.id === 'free_trial')
+  const paidPlans = plans.filter(p => p.id !== 'free_trial')
 
   async function handleSelect(planId: string) {
     setLoading(planId)
@@ -102,8 +104,33 @@ export default function PricingContent({ plans }: { plans: Plan[] }) {
             <div className="bg-red-50 text-red-700 text-sm rounded-lg px-4 py-3 mb-6 max-w-md mx-auto text-center">{error}</div>
           )}
 
+          {freePlan && (
+            <div className="mb-8 bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-200 rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div>
+                <div className="inline-block bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full mb-2">
+                  ✦ Geen creditcard nodig
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">{freePlan.name}</h3>
+                <p className="text-gray-500 text-sm mt-1">{freePlan.description}</p>
+                <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1">
+                  {freePlan.features.map((f: string) => (
+                    <li key={f} className="flex items-center gap-1.5 text-sm text-gray-600">
+                      <span className="text-green-500 font-bold">✓</span> {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <button
+                onClick={() => router.push('/register-coach?plan=free_trial')}
+                className="shrink-0 bg-green-600 hover:bg-green-700 text-white font-bold px-8 py-3 rounded-xl text-sm transition shadow-md shadow-green-100 whitespace-nowrap"
+              >
+                Gratis proberen →
+              </button>
+            </div>
+          )}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {plans.map(plan => (
+            {paidPlans.map(plan => (
               <div key={plan.id} className={`rounded-2xl flex flex-col relative overflow-hidden transition-shadow hover:shadow-lg ${
                 plan.highlight
                   ? 'bg-[#F47920] text-white shadow-xl shadow-orange-100 ring-2 ring-[#F47920]'
