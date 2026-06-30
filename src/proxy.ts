@@ -9,7 +9,7 @@ function detectLang(request: NextRequest): 'nl' | 'en' {
   return preferred === 'en' ? 'en' : 'nl'
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   // Redirect root to /nl or /en based on browser language

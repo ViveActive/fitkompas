@@ -17,10 +17,10 @@ const QUADRANT_COLORS: Record<string, string> = {
   inactive_unmotivated: 'bg-red-100 text-red-700',
 }
 
-function detectLang(): 'nl' | 'en' {
+async function detectLang(): Promise<'nl' | 'en'> {
   try {
-    const hdrs = headers()
-    const accept = (hdrs as unknown as { get: (k: string) => string | null }).get('accept-language') ?? ''
+    const hdrs = await headers()
+    const accept = hdrs.get('accept-language') ?? ''
     const preferred = accept.split(',')[0]?.split('-')[0]?.toLowerCase()
     return preferred === 'en' ? 'en' : 'nl'
   } catch {
@@ -32,7 +32,7 @@ export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
-  const lang = detectLang()
+  const lang = await detectLang()
 
   const { data: profile } = await supabase.from('profiles').select('*').eq('id', user.id).single()
   const role = profile?.role ?? 'coachee'
