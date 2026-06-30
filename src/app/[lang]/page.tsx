@@ -166,9 +166,8 @@ export default async function Home({ params }: { params: Promise<{ lang: string 
         </div>
       </section>
 
-      <footer className="bg-gray-50 px-6 py-8 text-center text-sm">
-        <span className="font-bold text-gray-500">{d.footer.text}</span>
-        <span className="text-gray-400"> {d.footer.year}</span>
+      <footer className="bg-gray-50 px-6 py-8 text-center text-sm text-gray-400">
+        {d.footer.copyright}
       </footer>
     </div>
   )
