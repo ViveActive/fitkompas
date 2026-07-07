@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import Footer from '@/components/layout/Footer'
+import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
 
 function RegisterCoachForm() {
   const router = useRouter()
@@ -71,6 +72,8 @@ function RegisterCoachForm() {
   }
 
   return (
+    <>
+    <AdminPreviewBar />
     <div className="min-h-screen flex flex-col bg-gray-50 px-4">
       <div className="flex-1 flex items-center justify-center">
         <div className="w-full max-w-md">
@@ -148,6 +151,7 @@ function RegisterCoachForm() {
       </div>
       <Footer />
     </div>
+    </>
   )
 }
 

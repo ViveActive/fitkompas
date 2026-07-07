@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import Link from 'next/link'
 import LangSwitcher from '@/components/layout/LangSwitcher'
+import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
 
 const QUADRANT_INFO = {
   nl: {
@@ -94,6 +95,8 @@ export default async function LangResultsPage({
   const yPct = Math.round(((session.y_score + 2) / 4) * 100)
 
   return (
+    <>
+    <AdminPreviewBar />
     <div className="min-h-screen bg-gray-50 py-8 px-4">
       <div className="max-w-2xl mx-auto">
         <div className="flex items-center justify-between mb-6">
@@ -142,5 +145,6 @@ export default async function LangResultsPage({
         </Link>
       </div>
     </div>
+    </>
   )
 }

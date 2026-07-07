@@ -7,6 +7,7 @@ import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import LangSwitcher from '@/components/layout/LangSwitcher'
+import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
 
 const dicts = {
   nl: {
@@ -117,6 +118,8 @@ export default function LangSurveyPage({ params }: { params: Promise<{ lang: str
   const questionText = (question as unknown as Record<string, string>)[t.question_key] ?? question.nl
 
   return (
+    <>
+    <AdminPreviewBar />
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex flex-col">
       <header className="px-6 py-4 flex items-center justify-between max-w-3xl mx-auto w-full">
         <Link href={`/${lang}`} className="text-xl font-bold">
@@ -178,5 +181,6 @@ export default function LangSurveyPage({ params }: { params: Promise<{ lang: str
         </div>
       </div>
     </div>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import LangSwitcher from '@/components/layout/LangSwitcher'
+import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
 
 const dicts = {
   nl: {
@@ -58,6 +59,8 @@ export default function ForgotPasswordPage({ params }: { params: Promise<{ lang:
   }
 
   return (
+    <>
+    <AdminPreviewBar />
     <div className="min-h-screen flex flex-col bg-gray-50 px-4">
       <div className="flex justify-end px-2 pt-4">
         <LangSwitcher lang={lang} />
@@ -103,5 +106,6 @@ export default function ForgotPasswordPage({ params }: { params: Promise<{ lang:
         </div>
       </div>
     </div>
+    </>
   )
 }

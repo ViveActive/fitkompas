@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import LangSwitcher from '@/components/layout/LangSwitcher'
+import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
 
 const dicts = {
   nl: {
@@ -97,6 +98,8 @@ function RegisterCoachForm({ lang }: { lang: Lang }) {
   }
 
   return (
+    <>
+    <AdminPreviewBar />
     <div className="min-h-screen flex flex-col bg-gray-50 px-4">
       <div className="flex justify-end px-2 pt-4">
         <LangSwitcher lang={lang} />
@@ -145,6 +148,7 @@ function RegisterCoachForm({ lang }: { lang: Lang }) {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
