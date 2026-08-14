@@ -4,6 +4,36 @@ import { isValidLang, type Lang } from '@/lib/i18n'
 import Link from 'next/link'
 import LangSwitcher from '@/components/layout/LangSwitcher'
 import AdminPreviewBar from '@/components/layout/AdminPreviewBar'
+import { QUESTIONS } from '@/lib/questions'
+
+const DIMENSIONS = {
+  nl: [
+    { id: 1, label: 'Sportgedrag', description: 'Hoe actief je bent in sport en bewegen' },
+    { id: 2, label: 'Sportbeleving', description: 'Hoe je sport en bewegen ervaart' },
+    { id: 3, label: 'Sociale omgeving', description: 'Steun en invloed van je omgeving' },
+    { id: 4, label: 'Zelfredzaamheid', description: 'Geloof in je eigen kunnen' },
+    { id: 5, label: 'Gezonde leefstijl', description: 'Aandacht voor gezondheid en voeding' },
+  ],
+  en: [
+    { id: 1, label: 'Sport behaviour', description: 'How active you are in sport and movement' },
+    { id: 2, label: 'Sport experience', description: 'How you experience sport and movement' },
+    { id: 3, label: 'Social environment', description: 'Support and influence of your surroundings' },
+    { id: 4, label: 'Self-efficacy', description: 'Belief in your own abilities' },
+    { id: 5, label: 'Healthy lifestyle', description: 'Attention to health and nutrition' },
+  ],
+}
+
+function calcDimensionScores(answers: { question_id: number; value: number }[]) {
+  const scoreMap: Record<number, number[]> = { 1: [], 2: [], 3: [], 4: [], 5: [] }
+  for (const answer of answers) {
+    if (answer.value === -99) continue
+    const question = QUESTIONS.find(q => q.id === answer.question_id)
+    if (!question) continue
+    const value = question.direction === 'positive' ? answer.value : -answer.value
+    scoreMap[question.dimension].push(value)
+  }
+  return scoreMap
+}
 
 const QUADRANT_INFO = {
   nl: {
@@ -87,9 +117,13 @@ export default async function LangResultsPage({
   const session = sessions?.[0]
   if (!session) redirect('/dashboard')
 
+  const { data: answers } = await supabase.from('answers').select('question_id, value').eq('session_id', id)
+  const dimensionScores = calcDimensionScores(answers ?? [])
+
   const quadrant = session.quadrant as keyof typeof QUADRANT_INFO.nl
   const info = QUADRANT_INFO[lang][quadrant]
   const l = labels[lang]
+  const dims = DIMENSIONS[lang]
 
   const xPct = Math.round(((session.x_score + 2) / 4) * 100)
   const yPct = Math.round(((session.y_score + 2) / 4) * 100)
@@ -214,6 +248,42 @@ export default async function LangResultsPage({
               <span className="text-gray-400">{l.motivation}</span>
               <p className="font-semibold text-gray-800">{session.y_score?.toFixed(2)}</p>
             </div>
+          </div>
+        </div>
+
+        {/* Dimensie rapportage */}
+        <div className="bg-white rounded-2xl shadow p-6 mb-6">
+          <h3 className="font-semibold text-gray-700 mb-5">
+            {lang === 'nl' ? '5 dimensies' : '5 dimensions'}
+          </h3>
+          <div className="space-y-4">
+            {dims.map(dim => {
+              const values = dimensionScores[dim.id] ?? []
+              const avg = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : null
+              // avg loopt van -2 tot +2, omzetten naar 0-100%
+              const pct = avg !== null ? Math.round(((avg + 2) / 4) * 100) : null
+              const color =
+                pct === null ? 'bg-gray-200'
+                : pct >= 60 ? 'bg-green-500'
+                : pct >= 40 ? 'bg-yellow-400'
+                : 'bg-red-400'
+
+              return (
+                <div key={dim.id}>
+                  <div className="flex justify-between items-baseline mb-1">
+                    <span className="text-sm font-medium text-gray-700">{dim.label}</span>
+                    <span className="text-xs text-gray-400">{pct !== null ? `${pct}%` : '–'}</span>
+                  </div>
+                  <div className="w-full bg-gray-100 rounded-full h-3">
+                    <div
+                      className={`h-3 rounded-full transition-all ${color}`}
+                      style={{ width: pct !== null ? `${pct}%` : '0%' }}
+                    />
+                  </div>
+                  <p className="text-xs text-gray-400 mt-0.5">{dim.description}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
 
