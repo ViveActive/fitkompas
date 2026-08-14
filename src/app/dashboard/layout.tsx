@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Sidebar from '@/components/layout/Sidebar'
 import { type Role } from '@/types'
 
@@ -10,13 +11,12 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: profile, error: profileError } = await supabase
+  const adminClient = createAdminClient()
+  const { data: profile } = await adminClient
     .from('profiles')
     .select('role, full_name, email')
     .eq('id', user.id)
     .single()
-
-  console.log('[layout] user.id:', user.id, 'profile:', profile, 'error:', profileError)
 
   return (
     <div className="flex min-h-screen bg-gray-50">
