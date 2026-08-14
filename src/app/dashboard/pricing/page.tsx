@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import PricingEditor from './PricingEditor'
 
 export default async function AdminPricingPage() {
@@ -7,10 +8,11 @@ export default async function AdminPricingPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: myProfile } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+  const adminClient = createAdminClient()
+  const { data: myProfile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
   if (myProfile?.[0]?.role !== 'admin') redirect('/dashboard')
 
-  const { data: plans } = await supabase
+  const { data: plans } = await adminClient
     .from('pricing_plans')
     .select('*')
     .order('sort_order')
