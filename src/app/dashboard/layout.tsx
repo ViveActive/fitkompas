@@ -8,11 +8,13 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: profile } = await supabase
+  const { data: profile, error: profileError } = await supabase
     .from('profiles')
     .select('role, full_name, email')
     .eq('id', user.id)
     .single()
+
+  console.log('[layout] user.id:', user.id, 'profile:', profile, 'error:', profileError)
 
   return (
     <div className="flex min-h-screen bg-gray-50">
