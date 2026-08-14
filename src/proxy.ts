@@ -18,10 +18,11 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(`/${lang}`, request.url))
   }
 
-  // Redirect old root-level public pages to /nl/...
+  // Redirect old root-level public pages to /{lang}/...
   for (const route of PUBLIC_LANG_ROUTES) {
     if (pathname === route || pathname.startsWith(route + '/') || pathname.startsWith(route + '?')) {
-      return NextResponse.redirect(new URL(`/nl${pathname}`, request.url))
+      const lang = detectLang(request)
+      return NextResponse.redirect(new URL(`/${lang}${pathname}`, request.url))
     }
   }
 
