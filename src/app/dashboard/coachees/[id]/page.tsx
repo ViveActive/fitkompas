@@ -1,6 +1,27 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import { QUESTIONS } from '@/lib/questions'
+
+const DIMENSIONS = [
+  { id: 1, label: 'Actief leven', description: 'Hoe actief je bent in sport en bewegen' },
+  { id: 2, label: 'In beweging komen (daadkracht)', description: 'De mate waarin je initiatief neemt en dingen aanpakt' },
+  { id: 3, label: 'Positieve instelling', description: 'Hoe positief je kijkt naar bewegen en gezondheid' },
+  { id: 4, label: 'Je omgeving (sociale steun)', description: 'Steun en invloed van je omgeving' },
+  { id: 5, label: 'Gezond leven', description: 'Aandacht voor gezondheid en voeding' },
+]
+
+function calcDimensionScores(answers: { question_id: number; value: number }[]) {
+  const scoreMap: Record<number, number[]> = { 1: [], 2: [], 3: [], 4: [], 5: [] }
+  for (const answer of answers) {
+    if (answer.value === -99) continue
+    const question = QUESTIONS.find(q => q.id === answer.question_id)
+    if (!question) continue
+    const value = question.direction === 'positive' ? answer.value : -answer.value
+    scoreMap[question.dimension].push(value)
+  }
+  return scoreMap
+}
 
 const QUADRANT_LABELS: Record<string, string> = {
   active_motivated: 'Actief & Gemotiveerd',
@@ -98,6 +119,11 @@ export default async function CoacheePage({ params }: { params: Promise<{ id: st
     .order('completed_at', { ascending: false })
 
   const latest = sessions?.[0]
+
+  const { data: latestAnswers } = latest
+    ? await supabase.from('answers').select('question_id, value').eq('session_id', latest.id)
+    : { data: [] }
+  const dimensionScores = calcDimensionScores(latestAnswers ?? [])
 
   return (
     <div className="max-w-4xl">
@@ -201,6 +227,37 @@ export default async function CoacheePage({ params }: { params: Promise<{ id: st
                   </div>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Dimensie scores */}
+          <div className="bg-white rounded-2xl shadow-sm p-6 mb-6">
+            <h2 className="font-semibold text-gray-700 mb-1">Dimensies</h2>
+            <p className="text-xs text-gray-400 mb-5">Gebaseerd op de laatste meting</p>
+            <div className="space-y-4">
+              {DIMENSIONS.map(dim => {
+                const values = dimensionScores[dim.id] ?? []
+                const avg = values.length > 0 ? values.reduce((a, b) => a + b, 0) / values.length : null
+                const pct = avg !== null ? Math.round(((avg + 2) / 4) * 100) : null
+                const color = pct === null ? 'bg-gray-200' : pct >= 60 ? 'bg-green-500' : pct >= 40 ? 'bg-yellow-400' : 'bg-red-400'
+                const label = pct === null ? '–' : pct >= 60 ? 'Sterk' : pct >= 40 ? 'Matig' : 'Aandachtspunt'
+                const labelColor = pct === null ? 'text-gray-400' : pct >= 60 ? 'text-green-600' : pct >= 40 ? 'text-yellow-600' : 'text-red-500'
+
+                return (
+                  <div key={dim.id}>
+                    <div className="flex justify-between items-baseline mb-1">
+                      <span className="text-sm font-medium text-gray-700">{dim.label}</span>
+                      <div className="flex items-center gap-2">
+                        <span className={`text-xs font-semibold ${labelColor}`}>{label}</span>
+                        <span className="text-xs text-gray-400">{pct !== null ? `${pct}%` : ''}</span>
+                      </div>
+                    </div>
+                    <div className="w-full bg-gray-100 rounded-full h-2.5">
+                      <div className={`h-2.5 rounded-full transition-all ${color}`} style={{ width: pct !== null ? `${pct}%` : '0%' }} />
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
 
