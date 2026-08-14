@@ -11,7 +11,7 @@ const DIMENSIONS = {
     { id: 1, label: 'Actief leven', description: 'Hoe actief je bent in sport en bewegen' },
     { id: 2, label: 'In beweging komen (daadkracht)', description: 'De mate waarin je initiatief neemt en dingen aanpakt' },
     { id: 3, label: 'Positieve instelling', description: 'Hoe positief je kijkt naar bewegen en gezondheid' },
-    { id: 4, label: 'Sociale steun', description: 'Steun en invloed van je omgeving' },
+    { id: 4, label: 'Je omgeving (sociale steun)', description: 'Steun en invloed van je omgeving' },
     { id: 5, label: 'Gezond leven', description: 'Aandacht voor gezondheid en voeding' },
   ],
   en: [
