@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import CreateCoachForm from './CreateCoachForm'
 import Link from 'next/link'
 
@@ -8,8 +9,9 @@ export default async function CoachesPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).single()
-  if (profile?.role !== 'admin') redirect('/dashboard')
+  const adminClient = createAdminClient()
+  const { data: profile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
+  if (profile?.[0]?.role !== 'admin') redirect('/dashboard')
 
   const { data: coaches } = await supabase
     .from('profiles')

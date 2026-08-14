@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 import CoachNotes from './CoachNotes'
 import ProfileGroupManager from './ProfileGroupManager'
@@ -17,7 +18,8 @@ export default async function CoachDetailPage({ params }: { params: Promise<{ id
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: myProfile } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+  const adminClient = createAdminClient()
+  const { data: myProfile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
   if (myProfile?.[0]?.role !== 'admin') redirect('/dashboard')
 
   const { data: coachArr } = await supabase

@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 import GroupMemberManager from './GroupMemberManager'
 
@@ -9,7 +10,8 @@ export default async function GroupDetailPage({ params }: { params: Promise<{ id
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: myProfile } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+  const adminClient = createAdminClient()
+  const { data: myProfile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
   const role = myProfile?.[0]?.role
   if (role !== 'admin' && role !== 'coach') redirect('/dashboard')
 

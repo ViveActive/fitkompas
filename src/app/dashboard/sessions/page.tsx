@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 
 const QUADRANT_LABELS: Record<string, string> = {
@@ -28,7 +29,8 @@ export default async function SessionsPage({ searchParams }: { searchParams: Pro
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: profile } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+  const adminClient = createAdminClient()
+  const { data: profile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
   const role = profile?.[0]?.role
   if (role !== 'admin' && role !== 'coach') redirect('/dashboard')
 

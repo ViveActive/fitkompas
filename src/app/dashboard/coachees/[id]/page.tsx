@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 import { QUESTIONS } from '@/lib/questions'
 
@@ -90,7 +91,8 @@ export default async function CoacheePage({ params }: { params: Promise<{ id: st
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: myProfile } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+  const adminClient = createAdminClient()
+  const { data: myProfile } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
   const role = myProfile?.[0]?.role
 
   const { data: coacheeArr } = await supabase
