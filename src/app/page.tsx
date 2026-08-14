@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { createAdminClient } from '@/lib/supabase/admin'
 import Link from 'next/link'
 
 export default async function Home() {
@@ -8,7 +9,8 @@ export default async function Home() {
 
   let isAdmin = false
   if (user) {
-    const { data: profiles } = await supabase.from('profiles').select('role').eq('id', user.id).limit(1)
+    const adminClient = createAdminClient()
+    const { data: profiles } = await adminClient.from('profiles').select('role').eq('id', user.id).limit(1)
     const role = profiles?.[0]?.role
     if (role !== 'admin') {
       redirect('/dashboard')
