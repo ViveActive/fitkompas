@@ -8,18 +8,18 @@ import { QUESTIONS } from '@/lib/questions'
 
 const DIMENSIONS = {
   nl: [
-    { id: 1, label: 'Sportgedrag', description: 'Hoe actief je bent in sport en bewegen' },
-    { id: 2, label: 'Sportbeleving', description: 'Hoe je sport en bewegen ervaart' },
-    { id: 3, label: 'Sociale omgeving', description: 'Steun en invloed van je omgeving' },
-    { id: 4, label: 'Zelfredzaamheid', description: 'Geloof in je eigen kunnen' },
-    { id: 5, label: 'Gezonde leefstijl', description: 'Aandacht voor gezondheid en voeding' },
+    { id: 1, label: 'Actief leven', description: 'Hoe actief je bent in sport en bewegen' },
+    { id: 2, label: 'Daadkracht', description: 'De mate waarin je initiatief neemt en dingen aanpakt' },
+    { id: 3, label: 'Positieve instelling', description: 'Hoe positief je kijkt naar bewegen en gezondheid' },
+    { id: 4, label: 'Sociale steun', description: 'Steun en invloed van je omgeving' },
+    { id: 5, label: 'Gezond leven', description: 'Aandacht voor gezondheid en voeding' },
   ],
   en: [
-    { id: 1, label: 'Sport behaviour', description: 'How active you are in sport and movement' },
-    { id: 2, label: 'Sport experience', description: 'How you experience sport and movement' },
-    { id: 3, label: 'Social environment', description: 'Support and influence of your surroundings' },
-    { id: 4, label: 'Self-efficacy', description: 'Belief in your own abilities' },
-    { id: 5, label: 'Healthy lifestyle', description: 'Attention to health and nutrition' },
+    { id: 1, label: 'Active life', description: 'How active you are in sport and movement' },
+    { id: 2, label: 'Drive', description: 'The extent to which you take initiative and get things done' },
+    { id: 3, label: 'Positive mindset', description: 'How positively you view movement and health' },
+    { id: 4, label: 'Social support', description: 'Support and influence of your surroundings' },
+    { id: 5, label: 'Healthy life', description: 'Attention to health and nutrition' },
   ],
 }
 
