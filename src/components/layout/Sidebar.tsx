@@ -14,9 +14,9 @@ const NAV = {
     { href: '/dashboard/sessions', label: 'Alle sessies' },
     { href: '/dashboard/reports', label: 'Rapportages' },
     { href: '/', label: '↗ Landingspagina' },
-    { href: '/register', label: '↗ Registratie respondent' },
-    { href: '/survey', label: '↗ Vragenlijst (preview)' },
-    { href: '/pricing', label: '↗ Pricing pagina' },
+    { href: '/nl/register', label: '↗ Registratie respondent' },
+    { href: '/nl/survey', label: '↗ Vragenlijst (preview)' },
+    { href: '/nl/pricing', label: '↗ Pricing pagina' },
     { href: '/dashboard/pricing', label: 'Prijzen beheren' },
     { href: '/dashboard/preview', label: '📱 Voorbeeldweergave' },
   ],
@@ -31,7 +31,7 @@ const NAV = {
   ],
   respondent: [
     { href: '/dashboard', label: 'Mijn resultaten' },
-    { href: '/survey', label: 'Vragenlijst invullen' },
+    { href: '/nl/survey', label: 'Vragenlijst invullen' },
   ],
 }
 

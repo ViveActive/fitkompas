@@ -123,6 +123,84 @@ export default async function LangResultsPage({
             <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-red-500 font-medium">{l.unmotivated}</span>
             <span className="absolute left-2 top-1/2 -translate-y-1/2 text-xs text-red-500 font-medium" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg) translateY(50%)' }}>{l.passive}</span>
             <span className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-green-600 font-medium" style={{ writingMode: 'vertical-rl' }}>{l.active}</span>
+
+            {/* Max Verstappen — actief & gemotiveerd (ver rechtsboven) */}
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center" style={{ left: '88%', top: '10%' }}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" fill="#E8670A" stroke="white" strokeWidth="1.5"/>
+                {/* helm */}
+                <ellipse cx="16" cy="14" rx="9" ry="8" fill="#CC5500"/>
+                <rect x="8" y="14" width="16" height="6" rx="2" fill="#CC5500"/>
+                {/* vizier */}
+                <rect x="9" y="15" width="14" height="4" rx="1.5" fill="#1a1a2e"/>
+                {/* #1 */}
+                <text x="16" y="20" textAnchor="middle" fontSize="4" fill="white" fontWeight="bold">1</text>
+                {/* kin */}
+                <ellipse cx="16" cy="21" rx="5" ry="2" fill="#CC5500"/>
+              </svg>
+              <span className="text-[9px] text-gray-500 mt-0.5 whitespace-nowrap">Max V.</span>
+            </div>
+
+            {/* Maarten van Rossem — actief & niet gemotiveerd (rechtsonder) */}
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center" style={{ left: '68%', top: '82%' }}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" fill="#f0e6d3" stroke="white" strokeWidth="1.5"/>
+                {/* hoofd */}
+                <ellipse cx="16" cy="14" rx="7" ry="8" fill="#f5d5b0"/>
+                {/* haar grijs */}
+                <ellipse cx="16" cy="8" rx="7" ry="4" fill="#aaaaaa"/>
+                {/* baard */}
+                <ellipse cx="16" cy="21" rx="7" ry="4" fill="#cccccc"/>
+                {/* bril */}
+                <circle cx="12" cy="14" r="3" fill="none" stroke="#555" strokeWidth="1.2"/>
+                <circle cx="20" cy="14" r="3" fill="none" stroke="#555" strokeWidth="1.2"/>
+                <line x1="15" y1="14" x2="17" y2="14" stroke="#555" strokeWidth="1.2"/>
+                {/* mond nors */}
+                <path d="M13 19 Q16 17 19 19" stroke="#888" strokeWidth="1" fill="none"/>
+              </svg>
+              <span className="text-[9px] text-gray-500 mt-0.5 whitespace-nowrap">M. v. Rossem</span>
+            </div>
+
+            {/* Froukje de Both — niet actief & gemotiveerd (linksboven) */}
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center" style={{ left: '32%', top: '18%' }}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" fill="#fce4ec" stroke="white" strokeWidth="1.5"/>
+                {/* hoofd */}
+                <ellipse cx="16" cy="15" rx="7" ry="8" fill="#f9c8a0"/>
+                {/* haar donker lang */}
+                <ellipse cx="16" cy="8" rx="8" ry="5" fill="#3d2b1f"/>
+                <rect x="8" y="8" width="3" height="12" rx="1.5" fill="#3d2b1f"/>
+                <rect x="21" y="8" width="3" height="12" rx="1.5" fill="#3d2b1f"/>
+                {/* ogen */}
+                <circle cx="13" cy="14" r="1.2" fill="#3d2b1f"/>
+                <circle cx="19" cy="14" r="1.2" fill="#3d2b1f"/>
+                {/* glimlach */}
+                <path d="M13 18 Q16 21 19 18" stroke="#c0776a" strokeWidth="1.2" fill="none"/>
+              </svg>
+              <span className="text-[9px] text-gray-500 mt-0.5 whitespace-nowrap">Froukje d.B.</span>
+            </div>
+
+            {/* Midas Dekkers — niet actief & niet gemotiveerd (linksonder) */}
+            <div className="absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center" style={{ left: '20%', top: '72%' }}>
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="15" fill="#e8f5e9" stroke="white" strokeWidth="1.5"/>
+                {/* hoofd */}
+                <ellipse cx="16" cy="15" rx="7" ry="8" fill="#f5d5b0"/>
+                {/* haar grijs dun */}
+                <ellipse cx="16" cy="8" rx="6" ry="3" fill="#bbbbbb"/>
+                {/* baard licht */}
+                <ellipse cx="16" cy="22" rx="5" ry="3" fill="#dddddd"/>
+                {/* ogen */}
+                <circle cx="13" cy="14" r="1.2" fill="#555"/>
+                <circle cx="19" cy="14" r="1.2" fill="#555"/>
+                {/* neutrale mond */}
+                <line x1="13" y1="19" x2="19" y2="19" stroke="#999" strokeWidth="1"/>
+                {/* slak decoratief */}
+                <text x="24" y="28" fontSize="7">🐌</text>
+              </svg>
+              <span className="text-[9px] text-gray-500 mt-0.5 whitespace-nowrap">Midas D.</span>
+            </div>
+
             <div className="absolute w-4 h-4 bg-green-600 rounded-full border-2 border-white shadow-md -translate-x-1/2 -translate-y-1/2"
               style={{ left: `${xPct}%`, top: `${100 - yPct}%` }} />
           </div>

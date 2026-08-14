@@ -4,10 +4,10 @@ import PreviewFrame from './PreviewFrame'
 
 const PAGES = [
   { label: 'Landingspagina', href: '/' },
-  { label: 'Inloggen', href: '/login' },
-  { label: 'Registreren', href: '/register' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Vragenlijst', href: '/survey' },
+  { label: 'Inloggen', href: '/nl/login' },
+  { label: 'Registreren', href: '/nl/register' },
+  { label: 'Pricing', href: '/nl/pricing' },
+  { label: 'Vragenlijst', href: '/nl/survey' },
 ]
 
 export default async function PreviewPage() {
