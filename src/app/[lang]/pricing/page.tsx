@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { createClient } from '@/lib/supabase/server'
 import { isValidLang, type Lang } from '@/lib/i18n'
 import { redirect } from 'next/navigation'
